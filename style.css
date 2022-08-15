@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;400;700&family=Faster+One&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Exo", sans-serif;
 }
 body {
   width: 100%;
@@ -9,13 +11,16 @@ body {
 }
 main {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 500px;
   min-height: 300px;
 }
 input,
 textarea {
   border: none;
   border-radius: 5px;
+}
+label {
+  font-size: 18px;
 }
 .content {
   display: flex;
@@ -51,11 +56,19 @@ textarea {
   flex-direction: column;
 }
 .servivos .servicos-block input[type="number"] {
+  padding: 5px;
   align-self: flex-end;
   width: 85px;
+  margin-top: 5px;
 }
 .servivos .servicos-block button {
+  background: green;
+  color: white;
+  font-size: 18px;
   width: 50px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 5px;
 }
 #resultado {
   align-self: flex-end;
@@ -63,4 +76,5 @@ textarea {
   height: 30px;
   background-color: yellow;
   font-weight: bold;
+  border: 1px solid;
 }

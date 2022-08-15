@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+
     <title>Auto Pintura Luizinho</title>
 </head>
 
@@ -17,20 +18,20 @@
                 <img src="imagens/Imagem1.png" alt="">
             </div>
             <div class="dados-clientes">
-                <label for="">Cliente</label> <input type="text" name="Cliente" id="">
-                <label for="">Placa</label> <input type="text" name="placa" id="">
-                <label for="">Veiculo</label> <input type="text" name="veiculo" id="">
+                <label for="">Cliente</label> <input type="text" name="Cliente" id="" placeholder="EX:Victor Bueno">
+                <label for="">Placa</label> <input type="text" name="placa" id="" placeholder="EX:ABC-1234">
+                <label for="">Veiculo</label> <input type="text" name="veiculo" id="" placeholder="EX:SAVEIRO">
                 <label for="">Data</label> <input type="date" name="" id="">
             </div>
             <div class="servivos" id="servicos">
                 <div class="servicos-block">
-                    <label>Serviço 1</label><br>
+                    <label onclick="esconderBtn()">Serviço 1</label><br>
                     <textarea name="servico1" id="servico1" cols="30" rows="4" placeholder="Ex:Polimento"></textarea>
                     <input type="number" id="VALOR1" placeholder="R$">
-                    <button type="button" onclick="adicionar()">+</button>
+                    <button id="adicionar" type="button" onclick="adicionar()">+</button>
                 </div>
             </div>
-            <input type="number" id="resultado" onclick="calcula()" placeholder="R$">
+            <input type="number" id="resultado" onclick="calcular()" placeholder="R$">
         </div>
     </main>
 
