@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Auto Pintura Luizinho</title>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <div class="logo">
+                <img src="imagens/Imagem1.png" alt="">
+            </div>
+            <div class="dados-clientes">
+                <label for="">Cliente</label> <input type="text" name="Cliente" id="">
+                <label for="">Placa</label> <input type="text" name="placa" id="">
+                <label for="">Veiculo</label> <input type="text" name="veiculo" id="">
+                <label for="">Data</label> <input type="date" name="" id="">
+            </div>
+            <div class="servivos" id="servicos">
+                <div class="servicos-block">
+                    <label>Serviço 1</label><br>
+                    <textarea name="servico1" id="servico1" cols="30" rows="4" placeholder="Ex:Polimento"></textarea>
+                    <input type="number" id="VALOR1" placeholder="R$">
+                    <button type="button" onclick="adicionar()">+</button>
+                </div>
+            </div>
+            <input type="number" id="resultado" onclick="calcula()" placeholder="R$">
+        </div>
+    </main>
+
+</body>
+
+</html>
