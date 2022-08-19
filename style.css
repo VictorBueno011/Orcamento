@@ -86,10 +86,11 @@ label {
 #resultado {
   align-self: flex-end;
   width: 120px;
-  height: 30px;
+  height: 35px;
   background-color: yellow;
   font-weight: bold;
   border: 1px solid;
+  font-size: 16px;
 }
 .total {
   display: flex;
