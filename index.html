@@ -18,20 +18,26 @@
                 <img src="imagens/Imagem1.png" alt="">
             </div>
             <div class="dados-clientes">
-                <label for="">Cliente</label> <input type="text" name="Cliente" id="" placeholder="EX:Victor Bueno">
-                <label for="">Placa</label> <input type="text" name="placa" id="" placeholder="EX:ABC-1234">
-                <label for="">Veiculo</label> <input type="text" name="veiculo" id="" placeholder="EX:SAVEIRO">
-                <label for="">Data</label> <input type="date" name="" id="">
+                <label for="">Cliente:</label> <input type="text" name="Cliente" id="cliente"
+                    placeholder="EX:Victor Bueno">
+                <label for="">Placa:</label> <input type="text" name="placa" id="placa" placeholder="EX:ABC-1234">
+                <label for="">Veiculo:</label> <input type="text" name="veiculo" id="" placeholder="EX:SAVEIRO">
+                <label for="">Data:</label> <input type="date" name="" id="">
             </div>
             <div class="servivos" id="servicos">
                 <div class="servicos-block">
-                    <label onclick="esconderBtn()">Serviço 1</label><br>
-                    <textarea name="servico1" id="servico1" cols="30" rows="4" placeholder="Ex:Polimento"></textarea>
-                    <input type="number" id="VALOR1" placeholder="R$">
-                    <button id="adicionar" type="button" onclick="adicionar()">+</button>
+                    <label onclick="esconderBtn()">Serviços:</label>
+                    <br>
+                    <textarea name="servico1" id="servico1" cols="30" rows="6" placeholder="Ex:Polimento"></textarea>
+
+                    <!-- <button class="btn" id="adicionar" type="button" onclick="adicionar()">+</button> -->
                 </div>
             </div>
-            <input type="number" id="resultado" onclick="calcular()" placeholder="R$">
+            <div class="total">
+                <h3>TOTAL</h3>
+                <input type="number" id="resultado" onclick="calcular()" placeholder="R$">
+            </div>
+
         </div>
     </main>
 
