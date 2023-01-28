@@ -98,3 +98,15 @@ label {
   padding: 10px;
   text-align: right;
 }
+#download{
+  border: none;
+  /* width: 15px;
+  height: 15px; */
+  padding: 15px;
+  background-color: gray;
+  background-image: url(./imagens/download-button.png);
+  width: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+ 
+}
