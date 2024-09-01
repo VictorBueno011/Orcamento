@@ -129,7 +129,6 @@ label {
     background: white; /* Remover fundo cinza ao imprimir */
   }
   .logo img {
-    margin-top: -5px;
     height: 250px;
   }
   .content{
@@ -140,6 +139,8 @@ label {
   main {
     box-shadow: none; /* Remover a sombra para impressão */
     border: none; /* Remover borda para impressão */
+    padding: 5;
+    margin-top: -150px; /* Remover preenchimento para impressão */
   }
 
   /* Estilos adicionais podem ser ajustados conforme necessário */
