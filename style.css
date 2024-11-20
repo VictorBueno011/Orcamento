@@ -118,7 +118,11 @@ label {
 #download:hover {
   background-color: #218838;
 }
-
+#download {
+  @media print {
+      display: none !important;
+  }
+}
 /* Estilos aplicados durante a impressão */
 @media print {
   #download {

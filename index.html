@@ -47,9 +47,52 @@
                 <input type="text" id="resultado" value="R$">
             </div>
 
-            <button id="download" onclick="print()">Baixar</button>
+            <button id="download" onclick="generatePDF()">Baixar</button>
         </div>
     </main>
 </body>
+<!-- Replace existing PDF libraries -->
+<!-- Replace PDF libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const element = document.querySelector('.content');
+    const downloadBtn = document.getElementById('download');
+    downloadBtn.style.display = 'none'; 
+    
+    const options = {
+        scale: 1,
+        useCORS: true,
+        logging: false,
+        windowWidth: 1504,
+        width: 665
+    };
+
+    html2canvas(element, options).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        // Define margins (in mm)
+        const margin = 5;
+        
+        // Calculate dimensions with margins
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const contentWidth = pdfWidth - (margin * 2);
+        const contentHeight = pdfHeight - (margin * 2);
+        
+        // Calculate scaled height maintaining aspect ratio
+        const imgHeight = (canvas.height * contentWidth) / canvas.width;
+        
+        // Add image with margins
+        pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, imgHeight);
+        pdf.save('orcamento.pdf');
+    });
+}
+</script>
+</script>
 
 </html>
