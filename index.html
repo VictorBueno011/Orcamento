@@ -61,8 +61,8 @@ function generatePDF() {
     const { jsPDF } = window.jspdf;
     const element = document.querySelector('.content');
     const downloadBtn = document.getElementById('download');
-    downloadBtn.style.display = 'none'; 
-    
+    downloadBtn.style.display = 'none';
+
     const options = {
         scale: 2,
         useCORS: true,
@@ -75,22 +75,27 @@ function generatePDF() {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
         
-        // Define margins (in mm)
         const margin = 5;
-        
-        // Calculate dimensions with margins
         const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
         const contentWidth = pdfWidth - (margin * 2);
-        const contentHeight = pdfHeight - (margin * 2);
-        
-        // Calculate scaled height maintaining aspect ratio
         const imgHeight = (canvas.height * contentWidth) / canvas.width;
         
-        // Add image with margins
         pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, imgHeight);
-        pdf.save('orcamento.pdf');
-        downloadBtn.style.display = 'block'; 
+        
+        // Create blob and trigger download
+        const pdfBlob = pdf.output('blob');
+        const blobUrl = URL.createObjectURL(pdfBlob);
+        
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'orcamento.pdf';
+        document.body.appendChild(link);
+        link.click();
+        
+        // Cleanup
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+        downloadBtn.style.display = 'block';
     });
 }
 </script>
