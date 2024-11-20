@@ -90,6 +90,7 @@ function generatePDF() {
         // Add image with margins
         pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, imgHeight);
         pdf.save('orcamento.pdf');
+        downloadBtn.style.display = 'block'; 
     });
 }
 </script>
