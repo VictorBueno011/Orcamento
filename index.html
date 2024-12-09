@@ -51,8 +51,6 @@
         </div>
     </main>
 </body>
-<!-- Replace existing PDF libraries -->
-<!-- Replace PDF libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -82,20 +80,22 @@ function generatePDF() {
         
         pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, imgHeight);
         
-        // Convert PDF to base64
-        const pdfData = pdf.output('datauristring');
+        // Create blob and trigger download
+        const pdfBlob = pdf.output('blob');
+        const blobUrl = URL.createObjectURL(pdfBlob);
         
-        // Post message to React Native WebView
-        window.ReactNativeWebView.postMessage(JSON.stringify({
-            type: 'download',
-            data: pdfData,
-            filename: 'orcamento.pdf'
-        }));
-
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'orcamento.pdf';
+        document.body.appendChild(link);
+        link.click();
+        
+        // Cleanup
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
         downloadBtn.style.display = 'block';
     });
 }
-</script>
 </script>
 
 </html>
