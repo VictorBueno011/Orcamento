@@ -3,99 +3,257 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Auto Pintura Luizinho</title>
+    <title>Auto Pintura Luizinho - Ordem de Serviço</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item {
+            background: #B8860B;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .logo-container {
+            text-align: right;
+        }
+
+        .cnpj {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .form-content {
+            padding: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .services-container {
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .service-item input {
+            flex: 1;
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .add-service-btn {
+            width: 100%;
+            background: #f0f0f0;
+            border: 1px dashed #999;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .total-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .total-input {
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+        }
+
+        @media print {
+            .remove-btn,
+            .add-service-btn,
+            .download-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-container {
+                text-align: left;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <main>
-        <div class="content">
-            <div class="logo">
-                <img src="imagens/FotoLogo.jpg" alt="Logo Auto Pintura Luizinho">
-            </div>
-            <div class="dados-clientes">
-                <div class="input-group">
+    <div class="container">
+        <header class="header" style="box-sizing: border-box;">
+            <img src="imagens/FotoLogo.jpg" alt="Auto Pintura Luizinho">
+        </header>
+
+        <main class="form-content">
+            <div class="form-row">
+                <div class="form-group">
                     <label for="cliente">Cliente:</label>
-                    <input type="text" name="cliente" id="cliente" placeholder="EX: Victor Bueno">
+                    <input type="text" id="cliente" placeholder="EX: VICTOR BUENO">
                 </div>
-                <div class="input-group">
+                <div class="form-group">
                     <label for="placa">Placa:</label>
-                    <input type="text" name="placa" id="placa" placeholder="EX: ABC-1234">
+                    <input type="text" id="placa" placeholder="EX: ABC-1234">
                 </div>
-                <div class="input-group">
+                <div class="form-group">
                     <label for="veiculo">Veículo:</label>
-                    <input type="text" name="veiculo" id="veiculo" placeholder="EX: SAVEIRO">
-                </div>
-                <div class="input-group">
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" id="data">
+                    <input type="text" id="veiculo" placeholder="EX: SAVEIRO">
                 </div>
             </div>
 
-            <div class="servicos">
-                <div class="servicos-block">
-                    <label for="servico1" onclick="esconderBtn()">Serviços:</label>
-                    <textarea name="servico1" id="servico1" cols="30" rows="10" placeholder="Ex: Polimento"></textarea>
+            <div class="form-group" >
+                <label for="data">Data:</label>
+                <input type="date" id="data" style="margin-bottom: 10px;">
+            </div>
+
+            <div class="form-group services-container">
+                <label>Serviços:</label>
+                <div id="services-list"></div>
+                <button class="add-service-btn" onclick="addService()">+ Adicionar Serviço</button>
+            </div>
+
+            <div class="total-container">
+                <span>TOTAL</span>
+                <div>
+                    <span>R$</span>
+                    <input type="text" class="total-input" id="total">
                 </div>
             </div>
 
-            <div class="total">
-                <h3>TOTAL</h3>
-                <input type="text" id="resultado" value="R$">
-            </div>
+            <button class="download-btn" onclick="downloadForm()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Baixar
+            </button>
+        </main>
+    </div>
 
-            <button id="download" onclick="generatePDF()">Baixar</button>
-        </div>
-    </main>
+    <script>
+        function addService() {
+            const servicesList = document.getElementById('services-list');
+            const serviceItem = document.createElement('div');
+            serviceItem.className = 'service-item';
+
+            serviceItem.innerHTML = `
+                <input type="text" placeholder="EX: POLIMENTO">
+                <button class="remove-btn" onclick="removeService(this)">×</button>
+            `;
+
+            servicesList.appendChild(serviceItem);
+        }
+
+        function removeService(button) {
+            button.parentElement.remove();
+        }
+
+        function downloadForm() {
+            // Aqui você pode implementar a lógica para download
+            // Por exemplo, gerar um PDF ou imprimir a página
+            window.print();
+        }
+
+        // Adiciona um serviço inicial
+        addService();
+    </script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script>
-function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const element = document.querySelector('.content');
-    const downloadBtn = document.getElementById('download');
-    downloadBtn.style.display = 'none';
-
-    const options = {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        windowWidth: 1504,
-        width: 665
-    };
-
-    html2canvas(element, options).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        
-        const margin = 5;
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const contentWidth = pdfWidth - (margin * 2);
-        const imgHeight = (canvas.height * contentWidth) / canvas.width;
-        
-        pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, imgHeight);
-        
-        // Create blob and trigger download
-        const pdfBlob = pdf.output('blob');
-        const blobUrl = URL.createObjectURL(pdfBlob);
-        
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = 'orcamento.pdf';
-        document.body.appendChild(link);
-        link.click();
-        
-        // Cleanup
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
-        downloadBtn.style.display = 'block';
-    });
-}
-</script>
 
 </html>
