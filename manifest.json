@@ -1,0 +1,22 @@
+{
+    "name": "Orçamento AutoPinturaLuizinho",
+    "short_name": "Orçamento AutoPinturaLuizinho",
+    "description": "Sistema de orçamento para AutoPintura Luizinho",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "./imagens/orcamentacao (1).png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./imagens/orcamentacao.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "lang": "pt-BR"
+}
