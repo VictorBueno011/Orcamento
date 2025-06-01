@@ -53,6 +53,10 @@
             text-align: right;
         }
 
+        .logo { /* Adicionado para esconder por padrão */
+            display: none;
+        }
+
         .cnpj {
             margin-top: 10px;
             font-size: 14px;
@@ -158,6 +162,9 @@
             .download-btn {
                 display: none;
             }
+            .logo{
+                display: block; /* Mantido para mostrar no print */
+            }
         }
 
         @media (max-width: 600px) {
@@ -179,22 +186,22 @@
 <body>
     <div class="container">
         <header class="header" style="box-sizing: border-box;">
-            <img src="imagens/FotoLogo.jpg" alt="Auto Pintura Luizinho">
+            <img class="logo" src="imagens/FotoLogo.jpg" alt="Auto Pintura Luizinho">
         </header>
 
         <main class="form-content">
             <div class="form-row">
                 <div class="form-group">
                     <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente" placeholder="EX: VICTOR BUENO">
+                    <input type="text" id="cliente">
                 </div>
                 <div class="form-group">
                     <label for="placa">Placa:</label>
-                    <input type="text" id="placa" placeholder="EX: ABC-1234">
+                    <input type="text" id="placa">
                 </div>
                 <div class="form-group">
                     <label for="veiculo">Veículo:</label>
-                    <input type="text" id="veiculo" placeholder="EX: SAVEIRO">
+                    <input type="text" id="veiculo">
                 </div>
             </div>
 
@@ -235,7 +242,7 @@
             serviceItem.className = 'service-item';
 
             serviceItem.innerHTML = `
-                <input type="text" placeholder="EX: POLIMENTO">
+                <input type="text">
                 <button class="remove-btn" onclick="removeService(this)">×</button>
             `;
 
