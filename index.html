@@ -6,262 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
     <title>Auto Pintura Luizinho - Ordem de Serviço</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header {
-            color: white;
-            padding: 20px;
-            border-radius: 8px 8px 0 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .contact-item {
-            background: #B8860B;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .logo-container {
-            text-align: right;
-        }
-
-        .logo { /* Adicionado para esconder por padrão */
-            display: none;
-        }
-
-        .cnpj {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .form-content {
-            padding: 20px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        input,
-        button {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .services-container {
-            margin-bottom: 20px;
-        }
-
-        .service-item {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .service-item input {
-            flex: 1;
-        }
-
-        .remove-btn {
-            background: #ff4444;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .add-service-btn {
-            width: 100%;
-            background: #f0f0f0;
-            border: 1px dashed #999;
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .total-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .total-input {
-            width: 150px;
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .download-btn {
-            width: 100%;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .download-btn:hover {
-            background: #45a049;
-        }
-
-        @media print {
-            .remove-btn,
-            .add-service-btn,
-            .download-btn {
-                display: none;
-            }
-            .logo{
-                display: block; /* Mantido para mostrar no print */
-            }
-        }
-
-        @media (max-width: 600px) {
-            .header {
-                grid-template-columns: 1fr;
-            }
-
-            .logo-container {
-                text-align: left;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <header class="header" style="box-sizing: border-box;">
-            <img class="logo" src="imagens/FotoLogo.jpg" alt="Auto Pintura Luizinho">
+        <header class="header">
+            <div class="header-left">
+                <img class="logo" src="imagens/FotoLogo.jpg" alt="Auto Pintura Luizinho">
+                <div class="company-info">
+                    <h1 class="company-name">Auto Pintura Luizinho</h1>
+                    <div class="contact-list">
+                        <span class="contact-item">&#9742; (42) 3532-1170</span>
+                        <span class="contact-item">&#9743; (42) 988699796</span>
+                        <span class="contact-item">&#9993; autopinturaluizinho@hotmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="os-number">
+                    <label for="os">O.S. N&ordm;</label>
+                    <input type="text" id="os" inputmode="numeric">
+                </div>
+            </div>
         </header>
 
         <main class="form-content">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente">
+            <section class="client-section">
+                <h2 class="section-title">Dados do Cliente / Veículo</h2>
+                <div class="form-row">
+                    <div class="form-group fg-2">
+                        <label for="cliente">Cliente</label>
+                        <input type="text" id="cliente" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" inputmode="tel">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="placa">Placa:</label>
-                    <input type="text" id="placa">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="veiculo">Veículo</label>
+                        <input type="text" id="veiculo">
+                    </div>
+                    <div class="form-group">
+                        <label for="placa">Placa</label>
+                        <input type="text" id="placa" maxlength="8" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label for="cor">Cor</label>
+                        <input type="text" id="cor">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="veiculo">Veículo:</label>
-                    <input type="text" id="veiculo">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="data-entrada">Data Entrada</label>
+                        <input type="date" id="data-entrada">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-entrega">Previsão Entrega</label>
+                        <input type="date" id="data-entrega">
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="form-group" >
-                <label for="data">Data:</label>
-                <input type="date" id="data" style="margin-bottom: 10px;">
-            </div>
-
-            <div class="form-group services-container">
-                <label>Serviços:</label>
+            <section class="services-section">
+                <h2 class="section-title">Serviços</h2>
+                <div class="services-header">
+                    <span class="sh-desc">Descrição</span>
+                    <span class="sh-val">Valor</span>
+                    <span class="sh-act"></span>
+                </div>
                 <div id="services-list"></div>
-                <button class="add-service-btn" onclick="addService()">+ Adicionar Serviço</button>
-            </div>
+                <button class="add-service-btn" onclick="addService()" type="button">
+                    + Adicionar Serviço
+                </button>
+            </section>
 
-            <div class="total-container">
-                <span>TOTAL</span>
-                <div>
-                    <span>R$</span>
-                    <input type="text" class="total-input" id="total">
+            <section class="total-section">
+                <div class="total-container">
+                    <span class="total-label">TOTAL</span>
+                    <span class="total-value" id="total-display">R$ 0,00</span>
                 </div>
-            </div>
+            </section>
 
-            <button class="download-btn" onclick="downloadForm()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Baixar
-            </button>
+            <section class="obs-section">
+                <div class="form-group">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" rows="3"></textarea>
+                </div>
+            </section>
+
+            <div class="actions">
+                <button class="btn btn-clear" onclick="clearForm()" type="button">
+                    Limpar
+                </button>
+                <button class="btn btn-download" onclick="downloadPDF()" type="button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Baixar PDF
+                </button>
+                <button class="btn btn-whatsapp" onclick="sendWhatsApp()" type="button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Enviar WhatsApp
+                </button>
+            </div>
         </main>
+
+        <footer class="footer">
+            <p>Rua Agenor Nascimento, n&ordm;72 - Villa Faty, São Mateus do Sul - PR</p>
+            <p>CNPJ: 15.270.421/0001-00</p>
+        </footer>
     </div>
 
-    <script>
-        function addService() {
-            const servicesList = document.getElementById('services-list');
-            const serviceItem = document.createElement('div');
-            serviceItem.className = 'service-item';
-
-            serviceItem.innerHTML = `
-                <input type="text">
-                <button class="remove-btn" onclick="removeService(this)">×</button>
-            `;
-
-            servicesList.appendChild(serviceItem);
-        }
-
-        function removeService(button) {
-            button.parentElement.remove();
-        }
-
-        function downloadForm() {
-            // Aqui você pode implementar a lógica para download
-            // Por exemplo, gerar um PDF ou imprimir a página
-            window.print();
-        }
-
-        // Adiciona um serviço inicial
-        addService();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

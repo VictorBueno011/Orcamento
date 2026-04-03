@@ -1,9 +1,14 @@
 // service-worker.js
 
-const CACHE_NAME = 'my-pwa-cache-v1';
+const CACHE_NAME = 'my-pwa-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/style.css',
+  '/script.js',
+  '/imagens/FotoLogo.jpg',
+  'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js',
+  'https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js',
 ];
 
 // Install service worker and cache files
@@ -29,7 +34,7 @@ self.addEventListener('fetch', event => {
         return fetch(event.request).then(
           response => {
             // Check if valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
+            if(!response || response.status !== 200) {
               return response;
             }
 
