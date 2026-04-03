@@ -6,7 +6,7 @@ const urlsToCache = [
   '/index.html',
   '/style.css',
   '/script.js',
-  '/imagens/FotoLogo.jpg',
+  '/imagens/auto_pintura_luizinho_4k.png',
   'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js',
   'https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js',
 ];

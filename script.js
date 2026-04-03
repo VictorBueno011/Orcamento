@@ -127,6 +127,20 @@ function getFileName() {
 
 function prepareForCapture() {
     var container = document.querySelector('.container');
+    var body = document.body;
+
+    // Salva largura original
+    var originalWidth = container.style.width;
+    var originalMaxWidth = container.style.maxWidth;
+    var originalBodyPadding = body.style.padding;
+    var originalBodyBackground = body.style.backgroundColor;
+
+    // Define tamanho padrão para A4 (800px @ 96dpi = 210mm)
+    container.style.width = '800px';
+    container.style.maxWidth = '800px';
+    body.style.padding = '0';
+    body.style.backgroundColor = 'white';
+
     // Esconde botões e elementos de ação
     var actions = document.querySelector('.actions');
     var addBtn = document.querySelector('.add-service-btn');
@@ -155,6 +169,12 @@ function prepareForCapture() {
     osInput.style.borderBottom = '1px solid #666';
 
     return {
+        container: container,
+        body: body,
+        originalWidth: originalWidth,
+        originalMaxWidth: originalMaxWidth,
+        originalBodyPadding: originalBodyPadding,
+        originalBodyBackground: originalBodyBackground,
         actions: actions,
         addBtn: addBtn,
         removeBtns: removeBtns,
@@ -165,6 +185,12 @@ function prepareForCapture() {
 }
 
 function restoreAfterCapture(refs) {
+    // Restaura tamanho original
+    refs.container.style.width = refs.originalWidth;
+    refs.container.style.maxWidth = refs.originalMaxWidth;
+    refs.body.style.padding = refs.originalBodyPadding;
+    refs.body.style.backgroundColor = refs.originalBodyBackground;
+
     refs.actions.style.display = '';
     refs.addBtn.style.display = '';
     if (refs.shAct) refs.shAct.style.display = '';
@@ -186,11 +212,13 @@ function generatePDF() {
     var refs = prepareForCapture();
 
     return html2canvas(container, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        logging: false
+        logging: false,
+        width: 800,
+        windowWidth: 800
     }).then(function (canvas) {
         restoreAfterCapture(refs);
 
